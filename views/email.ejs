@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <div class="quote-box">
+            <h2>Verify your email</h2>
+            <form action="<%= action %>" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<%= user.email %>"/>
+                <br />
+                <button type="submit" class="btn-bot">
+                    <%= operation ? 'Subscribe' : 'Unsubscribe' %>
+                </button>
+            </form>
+    </div>
+      </ul>
+    </nav>
+    <script>
+    </script>
+  </body>
+</html>

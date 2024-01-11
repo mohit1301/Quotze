@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quote Generator</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <div class="quote-box">
+        <% if (message) { %>
+          <p class="success-message">
+            <%= message %>
+          </p>
+          <% } %>
+            <script>
+              setTimeout(() => {
+                document.querySelector('.success-message').remove();
+              }, 10000); // 10 seconds
+            </script>
+            <h2>Welcome to Quotze</h2>
+
+            <% if (!isAuthenticated) { %>
+              <button onclick="window.location.href='/login'">Login</button>
+
+              <% } else { %>
+                <% if(user.sub.split('|')[0]=='auth0' ) { %>
+                  <h3>Hey <%= user.nickname %>! </h3>
+                  <% } else { %>
+                    <h3>Hey <%= user.name %>
+                    </h3>
+                    <% } %>
+                      <% if (!isSubscribed) { %>
+                        <button onclick="window.location.href='/confirm-email'">Receive daily
+                          quotes</button>
+                        <% } else { %>
+                          <button onclick="window.location.href='/confirm-unsubscribe-email'">Unsubscribe from
+                            here</button>
+                          <% } %>
+                            <button onclick="window.location.href='/quote'">Quote of the
+                              day</button>
+                            <button onclick="window.location.href='/logout'">Logout</button>
+                            <% } %>
+      </div>
+    </ul>
+  </nav>
+  <script>
+  </script>
+</body>
+
+</html>
