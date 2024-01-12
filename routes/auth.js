@@ -53,14 +53,14 @@ Router.post('/email', checkTokenExpiration, async (req, res) => {
   }
 });
 
-Router.post('/unsubscribe', async (req, res) => {
+Router.post('/unsubscribe', checkTokenExpiration, async (req, res) => {
   try {
     //unsubscribe the user
     const userUpdateOptions = {
       method: 'PATCH',
       url: `https://${process.env.AUTH0_DOMAIN}/api/v2/users/${req.oidc.user.sub}`,
       headers: { authorization: `Bearer ${res.locals.token.accessToken}`, 'content-type': 'application/json' },
-      data: { user_metadata: { isSubscribed: true } },
+      data: { user_metadata: { isSubscribed: false } },
     };
 
     await axios.request(userUpdateOptions);
